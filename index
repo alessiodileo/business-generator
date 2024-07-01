@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Business</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Telegraf&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            font-family: 'Telegraf', sans-serif;
+            color: #1976d2;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #1976d2;
+        }
+        #result {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        .info-block {
+            background-color: #e3f2fd;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .info-block h3 {
+            margin-top: 0;
+            color: #0d47a1;
+        }
+        .info-block p {
+            margin-bottom: 5px;
+        }
+        .emoji {
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Your Business</h1>
+    <button id="generateBtn">Generate Now</button>
+    <div id="result"></div>
+
+    <script>
+        const businessData = {
+            "Business model": {
+                "description": "What type of customers you want to target with your business.",
+                "options": ["🏠 Business to Customer", "🏢 Business to Business"]
+            },
+            "Revenue model": {
+                "description": "How your business generates income, considering various pricing structures and sources.",
+                "options": ["💳 Subscription", "📢 Advertising", "🤝 Commission", "🛍️ Product or Service Sales", "🎁 Freemium", "📈 Usage Based"]
+            },
+            "Technology": {
+                "description": "Technology that drives your business operations, enhancing your products, services, and competitive edge.",
+                "options": ["🤖 Artificial Intelligence", "⛓️ Blockchain", "🌐 Internet of Things", "🕶️ Virtual Reality", "🌍 Geolocation", "📱 Augmented Reality", "📊 Big Data", "💾 Digital Products", "🛍️ Marketplace", "🧠 Machine Learning", "🦾 Robotics", "🖨️ 3D Printing", "👥 Social Network", "🔒 Cybersecurity", "📡 Drones", "🤝 Collaborative Tools", "🌿 Green Technology", "🧬 Biotechnology"]
+            },
+            "Industry": {
+                "description": "The industry where your business operate in.",
+                "options": ["🖥️ Technology", "📚 Education", "💵 Finance", "🏥 Healthcare", "🏭 Manufacturing", "🏢 Real Estate", "🚗 Transportation", "🛒 Retail", "🍽️ Food", "🎨 Entertainment", "🏡 Home", "🌿 Environment"]
+            },
+            "Investment": {
+                "description": "This is the initial investment required to launch or grow your business, ranging from low to high.",
+                "options": ["💰 Low Initial Investment", "💼 Medium Initial Investment", "💸 High Initial Investment"]
+            },
+            "Competition": {
+                "description": "The level of competition in your chosen market or industry, influencing pricing strategies and success.",
+                "options": ["🐢 Low Competition", "🦊 Medium Competition", "🦁 High Competition"]
+            },
+            "Experience Level": {
+                "description": "The expertise needed to run your business model, with options from beginner to advanced.",
+                "options": ["🎓 Beginner", "🔧 Intermediate", "🚀 Advanced"]
+            },
+            "Environmental Impact": {
+                "description": "The environmental impact of your business, reflecting your commitment to sustainability and ecological footprint.",
+                "options": ["🌱 Low Impact", "⚖️ Medium Impact", "🏭 High Impact"]
+            },
+            "Regulatory Requirements": {
+                "description": "The level of regulatory compliance your business will need, accounting for industry-specific rules and regulations.",
+                "options": ["📋 Low Requirements", "📑 Medium Requirements", "📚 High Requirements"]
+            }
+        };
+
+        function generateRandomBusiness() {
+            let result = "";
+            for (const [category, data] of Object.entries(businessData)) {
+                const randomOption = data.options[Math.floor(Math.random() * data.options.length)];
+                result += `
+                    <div class="info-block">
+                        <h3>${category}</h3>
+                        <p>${data.description}</p>
+                        <p><strong>${randomOption}</strong></p>
+                    </div>
+                `;
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+
+        document.getElementById("generateBtn").addEventListener("click", generateRandomBusiness);
+    </script>
+</body>
+</html>
